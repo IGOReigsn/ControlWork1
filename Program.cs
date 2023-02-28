@@ -1,2 +1,33 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿/* Написать программу, которая из имеющегося массива строк формирует массив строк, длина которых меньше либо равна 3 символа.
+Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма.
+Пример: ["hello","2","world",":-)"]--> ["2",":-)"]
+        ["1234","1567","-2","computer sience"]-->["-2"]
+        ["Russia","Denmark"]-->[] */
+
+// -------------------МЕТОД----------------------------------------------------------------------------
+string[] FilterLimitLength(string[] ar, int limit)
+{
+    int size = ar.Length;
+    string[] tmp = new string[size];
+    int counter = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (ar[i].Length <= limit)
+        {
+            tmp[counter] = ar[i];
+            counter++;
+        }
+    }
+    string[] arResult = new string[counter];
+    for (int i = 0; i < counter; i++)
+    {
+        arResult[i] = tmp[i];
+    }
+    return arResult;
+}
+// -------------------ОСНОВНАЯ ПРОГРАММА---------------------------------------------------------------------------
+// -------------------начальные значения---------------------------------------------------------------------------
+string[] arText = { "hello","2","world",":-)" };// один из заданных массивов
+int lengthLimit = 3;// ограничение длины выводимых элементов (по заданию=3)
+// -------------------Программа с вызовом метода---------------------------------------------------------------------------
+System.Console.WriteLine("[ " + String.Join(", ", FilterLimitLength(arText, lengthLimit)) + "]");
